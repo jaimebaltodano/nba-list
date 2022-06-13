@@ -5,6 +5,6 @@ export default axios.create({
   headers: {
     "Content-type": "application/json",
     "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
-    "X-RapidAPI-Host": "api-basketball.p.rapidapi.com",
+    "X-RapidAPI-Host": process.env.REACT_APP_API_HOST,
   },
 });
