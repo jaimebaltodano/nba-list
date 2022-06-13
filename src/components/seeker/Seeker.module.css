@@ -1,0 +1,13 @@
+.seeker-container{
+  margin: 3px 0px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.seekerInput{
+  border: 1px solid rgb(201,201,201);
+  border-radius: 4px;
+  background-color: rgb(201, 249, 226);
+  padding: 3px 3px;
+  font-size: large;
+}
