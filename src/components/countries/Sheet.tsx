@@ -12,7 +12,7 @@ export interface SheetInterface {
 const Sheet = ({ list }: SheetInterface) => {
   const currentPage = useSelector(getCurrentPage);
   const [pageList, setPageList] = useState<Array<CountryLeague>>([]);
-  const { sortBy, itemsPerPage } = usePagination(currentPage);
+  const { sortBy, itemsPerPage } = usePagination();
 
   const handleSort = (objectkey: keyof CountryLeague) => {
     const sortedList = sortBy(objectkey, pageList);

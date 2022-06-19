@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import usePagination from "../../hooks/usePagination";
-import { useSelector, useDispatch } from "react-redux";
-import { getCurrentPage, setCurrentPage } from "../../store/CountriesSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrentPage, getCurrentPage } from "../../store/CountriesSlice";
+import useButton from "../../hooks/useButton";
+import styles from "./Countries.module.css";
 
 export interface PagesInterface {
   totalItems: number;
 }
 const Pages = ({ totalItems }: PagesInterface) => {
-  const currentPage = useSelector(getCurrentPage);
-  const { itemsPerPage } = usePagination(currentPage);
+  const { itemsPerPage } = usePagination();
   const dispatch = useDispatch();
+  const { renderButton } = useButton();
+  const currentPage = useSelector(getCurrentPage);
 
   const [pages, setPages] = useState<Array<number>>([]);
 
@@ -19,21 +22,23 @@ const Pages = ({ totalItems }: PagesInterface) => {
 
   useEffect(() => {
     const totalPages = Math.ceil(totalItems / itemsPerPage);
-    const actPages = [];
+    const actPages = Array.from(Array(totalPages).keys());
 
-    for (let i = 0; i < totalPages; i++) {
-      actPages.push(i);
-    }
     setPages(actPages);
   }, [totalItems, itemsPerPage]);
 
   return (
     <>
-      {pages.map((p) => (
-        <div key={p} onClick={() => handleNewPage(p)}>
-          {p + 1}
-        </div>
-      ))}
+      {pages.map((p) =>
+        renderButton({
+          id: p.toString(),
+          handler: () => handleNewPage(p),
+          label: p.toString(),
+          className: `${styles.button} ${
+            p == currentPage ? styles.active : null
+          }`,
+        })
+      )}
     </>
   );
 };

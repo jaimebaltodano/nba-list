@@ -62,3 +62,19 @@
 #countries tr:nth-child(even){background-color: #f2f2f2;}
 
 #countries tr:hover {background-color: #ddd;}
+
+.button {
+  border: none;
+  background-color: #e7e7e7;
+  color: black;
+  min-width: 20px;
+  padding: 2px 3px;
+  font-size: 16px;
+  margin: 2px 2px;
+  cursor: pointer;
+}
+
+.active {
+  background-color: #4CAF50;
+  color: white;
+}

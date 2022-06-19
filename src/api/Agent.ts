@@ -22,8 +22,8 @@ const Countries = {
   list: () => requests.get<CountryLeagueResponse>('/countries')
 }
 
-const agent = {
+const Agent = {
   Countries
 }
 
-export default agent
+export default Agent

@@ -1,7 +1,7 @@
 
 import { CountryLeague } from "../type";
 
-const usePagination = (currentPage:number) => {
+const usePagination = () => {
   const itemsPerPage = 6;
 
   const sortBy = (
